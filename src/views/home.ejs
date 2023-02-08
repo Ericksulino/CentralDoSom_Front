@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Central do Som</title>
+</head>
+<body>
+    <div class="background">
+        <%- include('components/header') %>
+
+        <div class="Meio">
+            <h1>Equipamentos Novos e Usados</h1>
+            <h1>Várias Marcas</h1>
+            <P>Venha com a gente, montar o seu sistema</P>
+            <a href="/CadUser">
+            <button> Cadastre-se</button>
+            </a>
+        </div><!--Meio-->
+    </div><!--background-->
+
+    <!--Categorias-->
+    <section>
+        <div class="Container-card-1">
+            <div class="cards">
+                <p><b>Modulo Amplificador</b></p>
+                <img src="../img/Modulo amplificador.png">
+            </div><!--cards-->
+            <div class="cards">
+                <p><b>Alimentação</b></p>
+                <img src="../img/Alimentacao.png">
+            </div><!--cards-->
+            <div class="cards">
+                <p><b>Tweeter</b></p>
+                <img src="../img/tweeter.png">
+            </div><!--cards-->
+            <div class="cards">
+                <p><b>Médio Grave</b></p>
+                <img src="../img/medio.png">
+            </div><!--cards-->
+            <div class="cards">
+                <p><b>Corneta</b></p>
+                <img src="../img/corneta.png">
+            </div><!--cards-->
+            <div class="cards">
+                <p><b>Player</b></p>
+                <img src="../img/player.png">
+            </div><!--cards-->
+
+            <div class="cards">
+                <p><b>Caixa</b></p>
+                <img src="../img/caixa.png">
+            </div>
+            <div class="cards">
+                <p><b>Grave</b></p>
+                <img src="../img/Grave.png">
+            </div><!--cards-->
+        </div><!--Container-card-1-->
+  
+    
+    <section>
+        <h1>Produtos:</h1>
+        <%- include('components/list_produtos') %>
+    </section>
+
+        <%- include('components/footer') %>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html> 

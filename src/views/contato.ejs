@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Contato</title>
+</head>
+
+
+<body >
+    <%- include('components/header') %>
+    <div class="pg_contato" >
+    <section class="selc_contato">
+        <div></div>
+        <h2>Contato</h2>
+        <form id="form"class="form_contato">
+            <input type="text"class="inputs required" name="name" placeholder="Digite seu nome" required>
+    
+            <input type="email"class="inputs required" name="email" placeholder="Digite seu email"required>
+        
+            <textarea name="content_msg"class="inputs required" cols="30" rows="10" placeholder="Digite sua mensagem" required></textarea>
+            <button type="submit" id="button">Enviar</button>
+            <span class="span-required">ERRO ao mandar o mensagem!</span>
+        </form>
+    </section>
+    </div>
+    <%- include('components/footer') %>
+    <script>
+        const form = document.getElementById('form');
+        const campos = document.querySelectorAll('.required');
+        const spans = document.querySelectorAll('.span-required');
+
+        let message = "";
+        let type = "";
+
+
+
+        form.addEventListener('submit',(event)=>{
+            event.preventDefault();
+
+        // se todos os dados estiverem corretos
+            // dados a serem enviados
+            const dados = {
+            name: campos[0].value,
+            email: campos[1].value,
+            content_msg: campos[2].value,
+            };
+            console.log(dados);
+            fetch('/msg', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+            })
+            .then(res => {
+            if (res.status === 201) {
+                message = ("Messagem enviada com Sucesso!");
+                type = "success";
+                console.log(message);
+                window.location.href = '/contato';
+
+            } else if (res.status === 400 || 500) {
+                message = ("ERRO ao enviar a Messagem!");
+                type = "danger"
+                console.log(message);
+                spans[0].style.display = 'block';
+                //window.location.href = '/CadUser';
+            }
+            })
+        }
+        );
+    </script>
+</body>
+</html>

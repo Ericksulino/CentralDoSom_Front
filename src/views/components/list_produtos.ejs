@@ -1,0 +1,38 @@
+
+<% let editar = false; %>
+
+<% if (typeof edit !== 'undefined') { %>
+  <% editar = edit; %>
+<% } %>
+<section>
+<div class="Container-item">
+  <% if (typeof produtos !== 'undefined') { %>
+  <% if (produtos.length === 0) { %>
+    <p>Não há produtos disponíveis no momento</p>
+  <% } else { %>
+    <% for (let produto of produtos) { %>
+      <%- include('produto', {editar,imagem:produto.imagem,nome:produto.nome,valor:produto.valor,descricao:produto.descricao,categoria:produto.categoria,tipo:produto.tipo,anunciante:produto.anunciante,telefone:produto.telefone}) %>
+    <% } %>
+  <% }} %>
+
+
+
+    <%- include('produto', {editar,imagem:"../img/background.jpg",nome:"Paredão Completo",valor:"35000",descricao:"Paredão top só no ponto de ligar e ouvir!",categoria:"Caixa",tipo:"Usado",anunciante:"Ericksulino Moura",telefone:"8621112754"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/Caixa-trio.jpg",nome:"Caixa trio",valor:"3500",descricao:"caixa top só no ponto de ligar e ouvir!",categoria:"Caixa",tipo:"Usado",anunciante:"Maria Ferreira",telefone:"8926204413"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/corneta.jpeg",nome:"Corneta com Cone",valor:"150",descricao:"Corneta jbl e driver d250x",categoria:"Corneta",tipo:"Usado",anunciante:"Jhonatas Rocha",telefone:"862854-5737"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/grave.jpeg",nome:"Grave de 15",valor:"1500",descricao:"Grave de 15 Hardpower zerado",categoria:"Grave",tipo:"Novo",anunciante:"Bruno Gomes",telefone:"8926753355"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/Kit-Driver-Selenium-JBL-D250-Tweeter.webp",nome:"Kit Driver Selenium JBL D250 e Tweeter",valor:"250",descricao:"Kit Driver Selenium JBL D250 e Tweeter zerados",categoria:"Corneta",tipo:"Novo",anunciante:"José Ferreira",telefone:"89999999999"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/pionner.jpeg",nome:"Player Pionner",valor:"300",descricao:"Player pionner com bluetooth",categoria:"Player",tipo:"Usado",anunciante:"Diego Araújo",telefone:"8927414535"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/caixa-bob.jpeg",nome:"Caixa bob",valor:"2300",descricao:"caixa top só no ponto de ligar e ouvir",categoria:"Caixa",tipo:"Novo",anunciante:"Rafael Eugenio",telefone:"8922478459"}) %>
+
+    <%- include('produto', {editar,imagem:"../img/modulo.webp",nome:"Modulo MD 8000.1",valor:"300",descricao:"Modulo MD 8000.1 bom para tocar dois graves",categoria:"Modulo",tipo:"Novo",anunciante:"Rangel Santos",telefone:"8926780123"}) %>
+
+  
+    </div>
+</section>

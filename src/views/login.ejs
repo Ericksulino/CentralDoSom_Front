@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+ 
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    
+    <title>Login</title>
+</head>
+<body>
+  <%- include('components/header') %>
+        <div>
+
+      <div class="container">
+        <div class="Msg-inicial">
+          <h1><b>Faça login com a sua conta</b></h1>
+        </div>
+          <form id="form">
+            
+            <div style="position: relative;">
+              <label for="email"></label>
+              <input type="text" class="inputs required"oninput="emailValidate()" id="entrada" placeholder="E-mail" name="email">
+              
+            </div>
+            
+            <div style="position: relative;">
+              <label for="senha"></label>
+              <input type="password" class="inputs required"oninput="mainPasswValidate()" id="entrada" placeholder="Senha" name="senha">
+              
+            </div>
+            <div class="poss-conta">
+              <br>
+              <a style="color:rgba(255, 166, 0, 0.849);" href = "#">esqueci a senha</a>
+              <br>
+            </div>
+          
+            <p><button type="submit" id="button">Login</button></p>
+            <span class="span-required">Usuário ou senha incorretos!</span>
+        
+          <p class="link">Não possui uma conta? <a href = "/CadUser">Cadastre-se</a></p>
+        </form>
+
+
+
+      </div>
+
+      <%- include('components/footer') %>
+	</div>
+    
+    <script>
+      const form = document.getElementById('form');
+const campos = document.querySelectorAll('.required');
+const spans = document.querySelectorAll('.span-required');
+
+
+
+form.addEventListener('submit',(event)=>{
+  spans[0].style.display = 'none';
+  event.preventDefault();
+    // dados a serem enviados
+    const dados = {
+        email: campos[0].value,
+        password: campos[1].value,
+    };
+    //console.log(dados);
+    fetch('http://localhost:5000/auth', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(dados)
+    })
+    .then(res => {
+      console.log(res.status);
+      if (res.status === 200) {
+        message = ("Sucesso!");
+        type = "success";
+        console.log(message);
+        window.location.href = '/';
+
+      } else if (res.status === 400 || 500) {
+        message = ("Usuário ou senha incorretos!");
+        type = "danger"
+        console.log(message);
+        spans[0].style.display = 'block';
+        //window.location.href = '/CadUser';
+      }
+    })})
+
+    </script>
+</body>
+</html> 

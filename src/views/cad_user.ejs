@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://kit.fontawesome.com/52e9b52be4.js" crossorigin="anonymous"></script> 
+    
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    
+    <title>Cadastro Usuario</title>
+</head>
+<body>
+          <%- include('components/header') %>
+    
+        <div class="container">
+        <div class="Msg-inicial">
+            <h1><b>Bem vindo(a) a Central do Som</b></h1>
+            <h3>Venha com a gente montar o seu sistema</h3>
+        </div>
+        <form id="form" action="/submit" method="POST">
+              
+              <div style="position: relative;">
+                <label for="nome"></label>
+                <input size="50" type="text" class="inputs required"oninput="nameValidate()" id="entrada" placeholder="Nome Completo" name="nome" size="4">
+                <span class="span-required">Nome deve ter no mínimo 5 caracteres</span>
+              </div>
+        
+              <div style="position: relative;">
+                <label for="email"></label>
+                <input type="text" class="inputs required"oninput="emailValidate()" id="entrada" placeholder="E-mail" name="email">
+                <span class="span-required">Digite um email válido</span>
+              </div>
+
+              <div style="position: relative;">
+                <label for="telefone whatsapp"></label>
+                <input type="tel" class="inputs required"oninput="emailValidate()" id="entrada" placeholder="Telefone WhatApp" name="telefone">
+                <span class="span-required">Digite um telefone válido</span>
+              </div>
+
+              <div style="position: relative;">
+                <label for="Cidade"></label>
+                <input type="txt" class="inputs required"oninput="cidadeValidate()" id="entrada" placeholder="Cidade" name="Cidade">
+                <span class="span-required">Digite uma cidade válida</span>
+              </div>
+
+              <div style="position: relative;">
+                <label for="Estado"></label>
+                <input type="txt" class="inputs required"oninput="estadoValidate()" id="entrada" placeholder="Estado" name="Estado">
+                <span class="span-required">Digite um estado válido</span>
+              </div>
+              
+              <div style="position: relative;">
+                <label for="senha"></label>
+                <input type="password" class="inputs required"oninput="mainPasswValidate()" id="entrada" placeholder="Senha" name="senha">
+                <span class="span-required">A senha deve ter no mínimo 8 caracteres</span>
+              </div>
+              
+        
+              <div style="position: relative;">
+                <label for="conf_senha"></label>
+                <input type="password" class="inputs required"oninput="comparePassw()" id="entrada" placeholder="Confirme sua senha" name="conf_senha">
+                <span class="span-required">As senhas devem ser compatíveis</span>
+              </div>
+        
+              <div class="checkbox"style="position: relative;">
+                <p><input type="checkbox"class="inputs required"oninput="termos()">Eu concordo com os <a href="#" style="color:rgba(255, 166, 0, 0.849);">Termos de uso e de privacidade</a></p>
+                <span class="span-required">Concorde com os nossos termos</span>
+              </div>
+            
+            <div class="poss-conta">
+            <h4 style="color: black;">Já possui uma conta?</h4>
+        
+            <a style="color:rgba(255, 166, 0, 0.849);" href = "Login">Fazer login</a>
+          </div>
+          
+          <p>Seu telefone e e-mail que foi cadastrado no nosso site será<br>utilizado como forma de contato para possíveis compradores.</p>
+          <p><button type="submit" id="button">Cadastre-se</button></p>
+          <span class="span-required">ERRO ao Criar o Usuário!</span>
+
+        </form>
+      </div>
+      <%- include('components/footer') %>
+	</div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="./scrpValCadUser.js"></script>
+</body>
+</html> 
