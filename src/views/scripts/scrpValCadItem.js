@@ -32,10 +32,12 @@ console.log(isValid)
       foto: campos[5].value,
     };
     //console.log(dados);
+    var token = localStorage.getItem("token");
+    console.log(token);
     fetch('5000/item', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Authorization': 'Bearer ' + token
       },
       body: JSON.stringify(dados)
     })
