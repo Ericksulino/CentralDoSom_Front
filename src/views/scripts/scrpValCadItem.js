@@ -28,15 +28,15 @@ console.log(isValid)
       tipo: campos[2].value,
       descricao: campos[3].value,
       valor: campos[4].value,
-      anunciante: "63e0637fdd2d0f6fe5664025",
-      foto: campos[5].value,
+      foto: campos[5].value
     };
-    console.log(dados.anunciante);
+    console.log(dados);
     var token = localStorage.getItem("token");
     
     fetch('http://localhost:5000/item', {
       method: 'POST',
       headers: {
+        'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       },
       body: JSON.stringify(dados)
