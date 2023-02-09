@@ -52,15 +52,17 @@ console.log(isValid);
     })
     .then(res => {
       if (res.status === 201) {
-        message = ("Usuário Criado com Sucesso!");
-        type = "success";
-        console.log(message);
+        res.json().then(data => {
+          console.log(data.message);
+        })
+        
         window.location.href = '/';
 
       } else if (res.status === 400 || 500) {
-        message = ("ERRO ao Criar o Usuário!");
-        type = "danger"
-        console.log(message);
+        res.json().then(data => {
+          console.log(data.message);
+        })
+       
         spans[8].style.display = 'block';
         //window.location.href = '/CadUser';
       }

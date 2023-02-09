@@ -28,13 +28,13 @@ console.log(isValid)
       tipo: campos[2].value,
       descricao: campos[3].value,
       valor: campos[4].value,
-      //anunciante:"63e0637fdd2d0f6fe5664025",
+      //anunciante: "63e0637fdd2d0f6fe5664025",
       foto: campos[5].value,
     };
-    //console.log(dados);
+    console.log(dados);
     var token = localStorage.getItem("token");
-    console.log(token);
-    fetch('5000/item', {
+    
+    fetch('http://localhost:5000/item', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + token
@@ -43,13 +43,15 @@ console.log(isValid)
     })
     .then(res => {
       if (res.status === 201) {
-        console.log(res.message);
+        res.json().then(data => {
+          console.log(data.message);
+        })
         window.location.href = '/';
 
       } else if (res.status === 400 || 500) {
-        //message = ("ERRO ao Cadastrar o Item!");
-        //type = "danger"
-        console.log(res.json());
+        res.json().then(data => {
+          console.log(data.message);
+        })
         spans[6].style.display = 'block';
         //window.location.href = '/CadUser';
       }
