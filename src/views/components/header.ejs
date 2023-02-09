@@ -1,3 +1,6 @@
+<script>
+    const localStorage = window.localStorage;
+</script>
 <div class="header" id="header">
     <button onclick="toggleSidebar()" class="btn_icon_header">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -15,7 +18,8 @@
         </button>
         <a href="/" class="active">Home</a>
         <a href="/Contato">Contato</a>
-        <a href="/login">Entrar</a>
+        <a href="/login" id="login">Entrar</a>
+
         <div class="caixa-busca">
             <input type="text" class="busca-txt" placeholder="Pesquisar">
             <a href="#" class="busca-bnt">
@@ -29,6 +33,24 @@
     var navigationHeader = document.getElementById('navigation_header');
     var content          = document.getElementById('content');
     var showSidebar      = false;
+    const token = localStorage.getItem("token");
+    const login = document.getElementById("login");
+
+    if (token) {
+    login.innerHTML = "Sair";
+    } else {
+    login.innerHTML = "Entrar";
+    login.href = "/login";
+  }
+
+  login.addEventListener("click", function() {
+  if (login.innerHTML === "Sair") {
+    localStorage.removeItem("token");
+    window.location.href = "/login";
+  } else {
+    window.location.href = "/login";
+  }
+})
 
     function toggleSidebar()
     {
