@@ -23,11 +23,14 @@ form.addEventListener('submit',(event)=>{
   }
 console.log(isValid)
   if(isValid){
+  var token = localStorage.getItem("token");
   const formData = new FormData();
   formData.append('file', image.files[0]);
-  let img;
   fetch('http://localhost:5000/imagens', {
       method: 'POST',
+      headers: {
+        'Authorization': 'Bearer ' + token
+      },
       body: formData
     })
       .then(response => response.json())
@@ -42,7 +45,6 @@ console.log(isValid)
           foto: data.img
         };
         console.log(dados);
-        var token = localStorage.getItem("token");
         fetch('http://localhost:5000/item', {
           method: 'POST',
           headers: {
@@ -71,36 +73,10 @@ console.log(isValid)
       })
       .catch(error => {
         console.error(error);
-      });
-    
-    /*
-    fetch('http://localhost:5000/item', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-      body: JSON.stringify(dados)
-    })
-    .then(res => {
-      if (res.status === 201) {
-        res.json().then(data => {
-          console.log(data.message);
-        })
-        window.location.href = '/';
-
-      } else if (res.status === 400 || 500) {
-        res.json().then(data => {
-          console.log(data.message);
-        })
         spans[6].style.display = 'block';
-        //window.location.href = '/CadUser';
-      }
-     
-    })*/
+      });
   } 
 });
-
 
 
 function setError(index){
