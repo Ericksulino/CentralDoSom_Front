@@ -3,6 +3,7 @@
 const form = document.getElementById('form');
 const campos = document.querySelectorAll('.required');
 const spans = document.querySelectorAll('.span-required');
+const image = document.getElementById('myFile');
 
 form.addEventListener('submit',(event)=>{
   event.preventDefault();
@@ -22,17 +23,57 @@ form.addEventListener('submit',(event)=>{
   }
 console.log(isValid)
   if(isValid){
-    const dados = {
-      nome: campos[0].value,
-      categoria: campos[1].value,
-      tipo: campos[2].value,
-      descricao: campos[3].value,
-      valor: campos[4].value,
-      foto: campos[5].value
-    };
-    console.log(dados);
-    var token = localStorage.getItem("token");
+  const formData = new FormData();
+  formData.append('file', image.files[0]);
+  let img;
+  fetch('http://localhost:5000/imagens', {
+      method: 'POST',
+      body: formData
+    })
+      .then(response => response.json())
+      .then(data => {
+        //console.log(data.img);
+        const dados = {
+          nome: campos[0].value,
+          categoria: campos[1].value,
+          tipo: campos[2].value,
+          descricao: campos[3].value,
+          valor: campos[4].value,
+          foto: data.img
+        };
+        console.log(dados);
+        var token = localStorage.getItem("token");
+        fetch('http://localhost:5000/item', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + token
+          },
+          body: JSON.stringify(dados)
+        })
+        .then(res => {
+          if (res.status === 201) {
+            res.json().then(data => {
+              console.log(data.message);
+            })
+            window.location.href = '/';
     
+          } else if (res.status === 400 || 500) {
+            res.json().then(data => {
+              console.log(data.message);
+            })
+            spans[6].style.display = 'block';
+            //window.location.href = '/CadUser';
+          }
+         
+        })
+        
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    
+    /*
     fetch('http://localhost:5000/item', {
       method: 'POST',
       headers: {
@@ -55,8 +96,9 @@ console.log(isValid)
         spans[6].style.display = 'block';
         //window.location.href = '/CadUser';
       }
-    })
-  }
+     
+    })*/
+  } 
 });
 
 
