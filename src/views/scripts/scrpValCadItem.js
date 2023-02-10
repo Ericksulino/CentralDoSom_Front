@@ -25,35 +25,19 @@ console.log(isValid)
   if(isValid){
   var token = localStorage.getItem("token");
   const formData = new FormData();
+  formData.append('nome', campos[0].value);
+  formData.append('categoria', campos[1].value);
+  formData.append('tipo', campos[2].value);
+  formData.append('descricao', campos[3].value);
+  formData.append('valor', campos[4].value);
   formData.append('file', image.files[0]);
-  fetch('http://localhost:5000/imagens', {
+  fetch('http://localhost:5000/item', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + token
       },
       body: formData
-    })
-      .then(response => response.json())
-      .then(data => {
-        //console.log(data.img);
-        const dados = {
-          nome: campos[0].value,
-          categoria: campos[1].value,
-          tipo: campos[2].value,
-          descricao: campos[3].value,
-          valor: campos[4].value,
-          foto: data.img
-        };
-        console.log(dados);
-        fetch('http://localhost:5000/item', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + token
-          },
-          body: JSON.stringify(dados)
-        })
-        .then(res => {
+    }).then(res => {
           if (res.status === 201) {
             res.json().then(data => {
               console.log(data.message);
@@ -69,12 +53,7 @@ console.log(isValid)
           }
          
         })
-        
-      })
-      .catch(error => {
-        console.error(error);
-        spans[6].style.display = 'block';
-      });
+    
   } 
 });
 
