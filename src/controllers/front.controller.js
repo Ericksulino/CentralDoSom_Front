@@ -1,6 +1,12 @@
 
 const getHome = (req,res) =>{
-    const API_URL = 'http://localhost:5000/item?limit=10';
+   // Recuperar informações da URL
+    const {filter} = req.query;
+    let API_URL = 'http://localhost:5000/item?limit=10';
+    if(filter){
+      API_URL = 'http://localhost:5000/item/category?categoria='+filter; 
+    }
+
     async function fetchData() {
       try {
         const response = await fetch(API_URL, {
@@ -16,6 +22,7 @@ const getHome = (req,res) =>{
         res.render("home",{produtos: data.produtos});
       } catch (error) {
         console.error(error);
+        res.render("home");
       }
     }
     fetchData();
