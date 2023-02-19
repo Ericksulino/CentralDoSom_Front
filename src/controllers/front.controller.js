@@ -56,7 +56,6 @@ const geContato =(req,res) =>{
 
 const getProds =(req,res) =>{
   let token = req.headers.authorization; // obter token do cabeçalho
-  console.log(token);
 
   const API_URL = 'http://localhost:5000/item';
   async function fetchData() {
