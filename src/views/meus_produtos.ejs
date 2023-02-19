@@ -16,14 +16,15 @@
 </head>
 <body>
     <%- include('components/header') %>
-        <div>
+        <div>  
             <div class="Msg-inicial">
                 
-                <h1><b>Meus Produtos</b></h1>
+                <h1><b>Minha área</b></h1>
               </div>
+              <div> 
               <a href="/Caditem">
-              <p><button id="button">Cadastrar Novo Produto</button></p>
-              
+                <p><button id="button">Cadastrar Novo Produto</button></p>
+            </div>
               <%- include('components/list_produtos',{edit:true}) %>
 
 

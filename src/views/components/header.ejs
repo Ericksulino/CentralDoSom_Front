@@ -18,6 +18,7 @@
         </button>
         <a href="/" class="active">Home</a>
         <a href="/Contato">Contato</a>
+        <a href="#" id="mprod" style="display: none;">Meus Produtos</a>
         <a href="/login" id="login">Entrar</a>
 
         <div class="caixa-busca">
@@ -35,13 +36,34 @@
     var showSidebar      = false;
     const token = localStorage.getItem("token");
     const login = document.getElementById("login");
+    const mprod = document.getElementById("mprod");
 
     if (token) {
-    login.innerHTML = "Sair";
-    } else {
-    login.innerHTML = "Entrar";
-    login.href = "/login";
+        mprod.style.display = "inline-block";
+        login.innerHTML = "Sair";
+} else {
+  login.innerHTML = "Entrar";
+  login.href = "/login";
+}
+mprod.addEventListener("click", function(event) {
+    event.preventDefault(); // previne o comportamento padrão do link
+
+    fetch("/produtos", {
+  headers: {
+    "Authorization": "Bearer " + token // adiciona o token como cabeçalho HTTP
   }
+}).then(response => {
+  if (response.ok) { // se a resposta for bem-sucedida, redireciona o usuário para a página "/produtos"
+    window.location.href = "/produtos";
+  } else {
+    throw new Error('Erro ao fazer requisição');
+  }
+}).catch(error => {
+  console.error('Erro na requisição:', error);
+});
+
+});
+
 
   login.addEventListener("click", function() {
   if (login.innerHTML === "Sair") {

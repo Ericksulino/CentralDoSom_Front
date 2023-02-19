@@ -1,3 +1,4 @@
+
 const getHome = (req,res) =>{
     const API_URL = 'http://localhost:5000/item?limit=10';
     async function fetchData() {
@@ -47,26 +48,32 @@ const geContato =(req,res) =>{
 }
 
 const getProds =(req,res) =>{
-    const API_URL = 'http://localhost:5000/item';
-    async function fetchData() {
-      try {
-        const response = await fetch(API_URL, {
-          method: 'GET',
-        });
-    
-        if (!response.ok) {
-          throw new Error(`Erro ao buscar dados. Status: ${response.status}`);
+  let token = req.headers.authorization; // obter token do cabeçalho
+  console.log(token);
+
+  const API_URL = 'http://localhost:5000/item';
+  async function fetchData() {
+    try {
+      const response = await fetch(API_URL, {
+        method: 'GET',
+        headers: {
+          "Authorization": `${token}` // passar o token para a requisição
         }
-    
-        const data = await response.json();
-        //console.log(data.produtos);
-        res.render('meus_produtos',{produtos: data.produtos});
-      } catch (error) {
-        console.error(error);
+      });
+
+      if (!response.ok) {
+        throw new Error(`Erro ao buscar dados. Status: ${response.status}`);
       }
+
+      const data = await response.json();
+      res.render('meus_produtos',{produtos: data.produtos});
+    } catch (error) {
+      console.error(error);
     }
-    fetchData();
+  }
+  fetchData();
 }
+
 
 
 module.exports ={
