@@ -1,5 +1,4 @@
 
-    let currentAction = null;
   
     function showModal(message, action,modal,css) {
       currentAction = action;

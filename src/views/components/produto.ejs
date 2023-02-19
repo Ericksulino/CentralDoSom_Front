@@ -1,6 +1,7 @@
 <div class="item">
     <a href="/More?imagem=<%= imagem %>&nome=<%= nome %>&valor=<%= valor %>&categoria=<%= categoria %>&tipo=<%= tipo %>&descricao=<%= descricao %>&anunciante=<%= anunciante %>&telefone=<%= telefone %>">
-      <img src=<%=imagem || 'default-value-for-imagem'%> alt="">
+      <img src="http://localhost:5000/imagens/<%= imagem%>" alt="">
+
     </a>
     <p><%=nome%></p>
     <h5>R$<%=valor%></h5>

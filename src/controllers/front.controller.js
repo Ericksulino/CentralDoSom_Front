@@ -1,6 +1,23 @@
 const getHome = (req,res) =>{
-  
-    res.render("home");
+    const API_URL = 'http://localhost:5000/item';
+    async function fetchData() {
+      try {
+        const response = await fetch(API_URL, {
+          method: 'GET',
+        });
+    
+        if (!response.ok) {
+          throw new Error(`Erro ao buscar dados. Status: ${response.status}`);
+        }
+    
+        const data = await response.json();
+        //console.log(data.produtos);
+        res.render("home",{produtos: data.produtos});
+      } catch (error) {
+        console.error(error);
+      }
+    }
+    fetchData();
 }
 
 const getLogin =(req,res) =>{
