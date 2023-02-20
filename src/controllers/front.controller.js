@@ -30,7 +30,7 @@ const getHome = (req,res) =>{
         res.render("home",{meio: flag,produtos: data.produtos});
       } catch (error) {
         console.error(error);
-        res.render("home");
+        res.render("home",{meio: flag});
       }
     }
     fetchData();
@@ -51,11 +51,11 @@ const getCadItem =(req,res) =>{
 
 const getMore =(req,res) =>{
     // Recuperar informações da URL
-    const { imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone} = req.query;
+    const { imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF} = req.query;
 
     // Renderizar a página correta com as informações recuperadas
 
-    res.render('more',{ imagem, nome, valor, categoria, tipo, descricao,anunciante,telefone});
+    res.render('more',{ imagem, nome, valor, categoria, tipo, descricao,anunciante,telefone,cidade,UF});
 }
 
 const geContato =(req,res) =>{
