@@ -2,7 +2,7 @@
 const getHome = (req,res) =>{
    // Recuperar informações da URL
     const {filter} = req.query;
-    let API_URL = 'http://localhost:5000/item?limit=10';
+    let API_URL = 'http://localhost:5000/item?limit=1000';
     if(filter){
       API_URL = 'http://localhost:5000/item/category?categoria='+filter; 
     }
