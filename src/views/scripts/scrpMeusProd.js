@@ -1,3 +1,48 @@
+//var token = localStorage.getItem("token");
+fetch('http://localhost:5000/item/byUser',{
+  method: 'GET',
+  headers: {
+    'Authorization': 'Bearer ' + token
+  },
+}).then(response => response.json())
+  .then(data => {
+    // seleciona o contêiner na página onde os itens serão exibidos
+    const container = document.getElementById('itens');
+    
+    // itera sobre os dados e adiciona o conteúdo gerado para cada item
+    data.produtos.forEach(item => {
+      // gera o conteúdo HTML usando o código acima e os dados do item
+      const itemHtml  = `
+        <div class="item">
+          <a href="/More?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}">
+            <img src="http://localhost:5000/imagens/${item.foto}" alt="">
+          </a>
+          <p>${item.nome}</p>
+          <h5>R$${item.valor}</h5>
+          <h3>${item.tipo}</h3>
+          <button type="button" class="button green" id="edit-${item.nome}">editar</button>
+          <button type="button" class="button red" id="delete-${item.nome}">excluir</button>
+          <div class="modal" id="modal">
+          <div class="modal-content">
+            <span class="close-button" onclick="closeModal()">
+              &times;
+            </span>
+          
+            <h1 id="modal-message"></h1>
+            <button type="button" class="button sim" id="edit-<%= nome %>">Sim</button>
+            <button type="button" class="button nao" id="delete-<%= nome %>">Não</button>
+          
+          </div>
+        </div>
+        </div>
+      `;
+      // adiciona o conteúdo gerado ao contêiner na página
+      container.insertAdjacentHTML('beforeend', itemHtml);
+    });
+  })
+  .catch(error => {
+    console.error('Ocorreu um erro:', error);
+  });
 
   
     function showModal(message, action,modal,css) {

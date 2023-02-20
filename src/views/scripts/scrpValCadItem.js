@@ -42,7 +42,7 @@ console.log(isValid)
             res.json().then(data => {
               console.log(data.message);
             })
-            window.location.href = '/';
+            window.location.href = '/produtos';
     
           } else if (res.status === 400 || 500) {
             res.json().then(data => {

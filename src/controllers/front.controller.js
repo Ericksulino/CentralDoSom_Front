@@ -55,29 +55,8 @@ const geContato =(req,res) =>{
 }
 
 const getProds =(req,res) =>{
-  let token = req.headers.authorization; // obter token do cabeçalho
 
-  const API_URL = 'http://localhost:5000/item';
-  async function fetchData() {
-    try {
-      const response = await fetch(API_URL, {
-        method: 'GET',
-        headers: {
-          "Authorization": `${token}` // passar o token para a requisição
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error(`Erro ao buscar dados. Status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      res.render('meus_produtos',{produtos: data.produtos});
-    } catch (error) {
-      console.error(error);
-    }
-  }
-  fetchData();
+      res.render('meus_produtos');
 }
 
 

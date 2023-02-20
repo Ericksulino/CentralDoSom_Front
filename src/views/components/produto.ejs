@@ -6,27 +6,6 @@
     <p><%=nome%></p>
     <h5>R$<%=valor%></h5>
     <h3><%=tipo%></h3>
-    <% if (editar){%>
-      <button type="button" class="button green" id="edit-<%= nome %>">editar</button>
-      <button type="button" class="button red" id="delete-<%= nome %>">excluir</button>
-    <%}%>
-  </div><!--roupa-->
-  
-  <div class="modal" id="modal">
-    <div class="modal-content">
-      <span class="close-button" onclick="closeModal()">
-        &times;
-      </span>
-    
-      <h1 id="modal-message"></h1>
-      <button type="button" class="button sim" id="edit-<%= nome %>">Sim</button>
-      <button type="button" class="button nao" id="delete-<%= nome %>">Não</button>
+</div>
 
-      <!--roupa<%- include('form_item', {edit:true,image:imagem,name:nome,condicao:tipo,valor:valor,categoria:categoria,descricao:descricao}) %>-->
-
-    
-    </div>
-  </div>
-
-  <script src="../scrpMeusProd.js"></script>
   
