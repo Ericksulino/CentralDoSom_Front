@@ -20,7 +20,6 @@
             </a>
         </div><!--Meio-->
     </div><!--background-->
-    <% } %>
     <!--Categorias-->
     <section>
         <div class="Container-card-1">
@@ -77,7 +76,9 @@
   
     
     <section>
-        <h1>Produtos:</h1>
+        <% } %>
+        <br><br>
+        <h1><%=msg %>:</h1>
         <%- include('components/list_produtos') %>
     </section>
 

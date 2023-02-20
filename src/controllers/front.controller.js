@@ -4,15 +4,24 @@ const getHome = (req,res) =>{
    // Recuperar informações da URL
     const {filter} = req.query;
     const {seach} = req.query;
+    const {type} = req.query;
+    var msg ='Todos os Produtos';
     var flag = true;
     let API_URL = 'http://localhost:5000/item?limit=1000';
     if(filter){
       API_URL = 'http://localhost:5000/item/category?categoria='+filter; 
       flag = false;
+      msg = filter;
     }
     else if(seach){
       flag = false;
       API_URL = 'http://localhost:5000/item/seach?nome='+seach;
+      msg = seach;
+    }
+    else if(type){
+      flag = false;
+      API_URL = 'http://localhost:5000/item/type?tipo='+type;
+      msg = type;
     }
 
     async function fetchData() {
@@ -27,10 +36,10 @@ const getHome = (req,res) =>{
     
         const data = await response.json();
         //console.log(data.produtos);
-        res.render("home",{meio: flag,produtos: data.produtos});
+        res.render("home",{msg:msg,meio: flag,produtos: data.produtos});
       } catch (error) {
         console.error(error);
-        res.render("home",{meio: flag});
+        res.render("home",{msg:msg,meio: flag});
       }
     }
     fetchData();
