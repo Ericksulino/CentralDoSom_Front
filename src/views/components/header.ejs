@@ -37,8 +37,21 @@
     const token = localStorage.getItem("token");
     const login = document.getElementById("login");
     const mprod = document.getElementById("mprod");
+    const searchBtn = document.querySelector('.busca-bnt');
+    const searchInput = document.querySelector('.busca-txt');
 
-    if (token) {
+    // adiciona um evento de clique ao botão de busca
+searchBtn.addEventListener('click', () => {
+  // obtém o valor inserido no campo de busca
+  const searchTerm = searchInput.value;
+  
+  if(searchTerm != ""){
+    console.log(searchTerm);
+    window.location.href = "/?seach="+searchTerm;
+  }
+})
+
+if (token) {
         mprod.style.display = "inline-block";
         login.innerHTML = "Sair";
 } else {

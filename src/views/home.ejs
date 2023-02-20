@@ -8,8 +8,9 @@
     <title>Central do Som</title>
 </head>
 <body>
+    <%- include('components/header') %>
+    <% if(meio) {%>
     <div class="background">
-        <%- include('components/header') %>
         <div class="Meio">
             <h1>Equipamentos Novos e Usados</h1>
             <h1>Várias Marcas</h1>
@@ -19,7 +20,7 @@
             </a>
         </div><!--Meio-->
     </div><!--background-->
-
+    <% } %>
     <!--Categorias-->
     <section>
         <div class="Container-card-1">
