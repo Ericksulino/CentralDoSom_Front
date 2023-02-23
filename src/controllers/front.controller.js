@@ -7,20 +7,20 @@ const getHome = (req,res) =>{
     const {type} = req.query;
     var msg ='Todos os Produtos';
     var flag = true;
-    let API_URL = 'http://localhost:5000/item?limit=1000';
+    let API_URL = 'http://'+process.env.API_URL+':5000/item?limit=1000';
     if(filter){
-      API_URL = 'http://localhost:5000/item/category?categoria='+filter; 
+      API_URL = 'http://'+process.env.API_URL+':5000/item/category?categoria='+filter; 
       flag = false;
       msg = filter;
     }
     else if(seach){
       flag = false;
-      API_URL = 'http://localhost:5000/item/seach?nome='+seach;
+      API_URL = 'http://'+process.env.API_URL+':5000/item/seach?nome='+seach;
       msg = seach;
     }
     else if(type){
       flag = false;
-      API_URL = 'http://localhost:5000/item/type?tipo='+type;
+      API_URL = 'http://'+process.env.API_URL+':5000/item/type?tipo='+type;
       msg = type;
     }
 

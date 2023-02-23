@@ -4,11 +4,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const path = require('path');
 const cors =  require('cors')
-//const dotenv = require('dotenv')
+const dotenv = require('dotenv')
 
 
 //config do dotenv -variaveis de ambiente
-//dotenv.config();
+dotenv.config();
 
 
 //rota com o front
