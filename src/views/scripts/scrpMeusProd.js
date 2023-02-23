@@ -1,5 +1,5 @@
 //var token = localStorage.getItem("token");
-fetch('http://10.180.42.11:5000/item/byUser',{
+fetch('https://api-centraldosom.onrender.com/item/byUser',{
   method: 'GET',
   headers: {
     'Authorization': 'Bearer ' + token
@@ -15,7 +15,7 @@ fetch('http://10.180.42.11:5000/item/byUser',{
       const itemHtml  = `
         <div class="item">
           <a href="/More?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}">
-            <img src="http://10.180.42.11:5000/imagens/${item.foto}" alt="">
+            <img src="https://api-centraldosom.onrender.com/imagens/${item.foto}" alt="">
           </a>
           <p>${item.nome}</p>
           <h5>R$${item.valor}</h5>

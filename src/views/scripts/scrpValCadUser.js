@@ -43,7 +43,7 @@ console.log(isValid);
       password: campos[5].value
     };
     console.log(dados);
-    fetch('http://10.180.42.11:5000/user', {
+    fetch('https://api-centraldosom.onrender.com/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
