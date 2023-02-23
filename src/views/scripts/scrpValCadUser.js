@@ -43,7 +43,7 @@ console.log(isValid);
       password: campos[5].value
     };
     console.log(dados);
-    fetch('http://localhost:5000/user', {
+    fetch('http://10.180.42.11:5000/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

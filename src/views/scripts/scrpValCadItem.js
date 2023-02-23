@@ -31,7 +31,7 @@ console.log(isValid)
   formData.append('descricao', campos[3].value);
   formData.append('valor', campos[4].value);
   formData.append('file', image.files[0]);
-  fetch('http://localhost:5000/item', {
+  fetch('http://10.180.42.11:5000/item', {
       method: 'POST',
       headers: {
         'Authorization': 'Bearer ' + token
