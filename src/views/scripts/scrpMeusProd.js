@@ -20,8 +20,12 @@ fetch('https://api-centraldosom.onrender.com/item/byUser',{
           <p>${item.nome}</p>
           <h5>R$${item.valor}</h5>
           <h3>${item.tipo}</h3>
+          <a href="CadItem?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}">
           <button type="button" class="button green" id="edit-${item.nome}">editar</button>
+          <a/>
+          <a href="/">
           <button type="button" class="button red" id="delete-${item.nome}">excluir</button>
+          <a/>
           <div class="modal" id="modal">
           <div class="modal-content">
             <span class="close-button" onclick="closeModal()">
@@ -29,8 +33,8 @@ fetch('https://api-centraldosom.onrender.com/item/byUser',{
             </span>
           
             <h1 id="modal-message"></h1>
-            <button type="button" class="button sim" id="edit-<%= nome %>">Sim</button>
-            <button type="button" class="button nao" id="delete-<%= nome %>">Não</button>
+            <button type="button" class="button sim" id="edit-${item.nome}">Sim</button>
+            <button type="button" class="button nao" id="delete-${item.nome}">Não</button>
           
           </div>
         </div>
@@ -92,7 +96,7 @@ fetch('https://api-centraldosom.onrender.com/item/byUser',{
             // Código para editar item
             console.log("Editando item");
             
-             window.location.href = '/CadItem';
+             //window.location.href = '/CadItem';
              //window.location.href = '/CadItem?imagem=' + imagem + '&nome=' + nome + '&valor=' + valor + '&categoria=' + categoria + '&tipo=' + tipo + '&descricao=' + descricao + '&anunciante=' + anunciante + '&telefone=' + telefone;
              
             break;

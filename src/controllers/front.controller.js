@@ -50,8 +50,9 @@ const getLogin =(req,res) =>{
 }
 
 const getCadUser =(req,res) =>{
-    const {message} = req.query;
-    res.render('cad_user',{message});
+     // Recuperar informações da URL
+     const {editar,imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF} = req.query;
+    res.render('cad_user',{editar,imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF});
 }
 
 const getCadItem =(req,res) =>{
