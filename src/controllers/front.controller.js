@@ -1,5 +1,3 @@
-const { search } = require("../../../API_CentalDoSom/src/routes/user.route");
-
 const getHome = (req,res) =>{
    // Recuperar informações da URL
     const {filter} = req.query;
