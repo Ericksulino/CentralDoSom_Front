@@ -4,8 +4,8 @@
     "description": "Central do Som",
     "main": "index.js",
     "scripts": {
-        "dev": "nodemon .",
-        "start":"node index"
+        "dev": "nodemon index.js",
+        "start":"node index.js"
     },
     "author": "Ericksulino Moura",
     "license": "ISC",
