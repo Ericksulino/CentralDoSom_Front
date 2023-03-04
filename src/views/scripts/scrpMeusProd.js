@@ -2,7 +2,7 @@ const welcome = document.getElementById('welcome');
 if (!token) {
    window.location.href = '/login';
 }
-  fetch('https://api-centraldosom.onrender.com/auth', {
+  fetch('https://api-centaldosom.vercel.app/auth', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + token
@@ -14,7 +14,7 @@ if (!token) {
             welcome.innerText = "Bem vindo(a) " + data.user;
           })
               //var token = localStorage.getItem("token");
-              fetch('https://api-centraldosom.onrender.com/item/byUser',{
+              fetch('https://api-centaldosom.vercel.app/item/byUser',{
                 method: 'GET',
                 headers: {
                   'Authorization': 'Bearer ' + token
@@ -30,7 +30,7 @@ if (!token) {
                     const itemHtml  = `
                       <div class="item">
                         <a href="/More?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}">
-                          <img src="https://api-centraldosom.onrender.com/imagens/${item.foto}" alt="">
+                          <img src="https://api-centaldosom.vercel.app//imagens/${item.foto}" alt="">
                         </a>
                         <p>${item.nome}</p>
                         <h5>R$${item.valor}</h5>

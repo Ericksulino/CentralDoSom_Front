@@ -5,20 +5,20 @@ const getHome = (req,res) =>{
     const {type} = req.query;
     var msg ='Todos os Produtos';
     var flag = true;
-    let API_URL = 'https://api-centraldosom.onrender.com/item?limit=1000';
+    let API_URL = 'https://api-centaldosom.vercel.app/item?limit=1000';
     if(filter){
-      API_URL = 'https://api-centraldosom.onrender.com/item/category?categoria='+filter; 
+      API_URL = 'https://api-centaldosom.vercel.app/item/category?categoria='+filter; 
       flag = false;
       msg = filter;
     }
     else if(seach){
       flag = false;
-      API_URL = 'https://api-centraldosom.onrender.com/item/seach?nome='+seach;
+      API_URL = 'https://api-centaldosom.vercel.app/item/seach?nome='+seach;
       msg = seach;
     }
     else if(type){
       flag = false;
-      API_URL = 'https://api-centraldosom.onrender.com/item/type?tipo='+type;
+      API_URL = 'https://api-centaldosom.vercel.app/item/type?tipo='+type;
       msg = type;
     }
 
