@@ -18,8 +18,8 @@
             <h1>Equipamentos Novos e Usados</h1>
             <h1>Várias Marcas</h1>
             <P>Venha com a gente, montar o seu sistema</P>
-            <a href="/CadUser">
-            <button> Cadastre-se</button>
+            <a id="linkcad" href="/CadUser">
+            <button id="cadastro"> Cadastre-se</button>
             </a>
         </div><!--Meio-->
     </div><!--background-->
@@ -91,6 +91,12 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script>
+          const cad = document.getElementById("cadastro");
+          const linkcad = document.getElementById("linkcad");
+          if(token){
+            cad.innerHTML ="Cadastar Novo Produto";
+            linkcad.href = "/Caditem";
+          }
     </script>
 </body>
 </html> 
