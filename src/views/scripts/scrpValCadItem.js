@@ -73,7 +73,7 @@ if (!token) {
     console.log(data.message);
   })
   window.location.href = '/login';
- 
+  localStorage.removeItem("token");
 }
 
 });
