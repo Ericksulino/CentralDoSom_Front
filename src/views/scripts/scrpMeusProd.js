@@ -35,7 +35,7 @@ if (!token) {
                         <p>${item.nome}</p>
                         <h5>R$${item.valor}</h5>
                         <h3>${item.tipo}</h3>
-                        <a href="CadItem?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}">
+                        <a href="/EditItem?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}&id=${item.id}">
                         <button type="button" class="button green" id="edit-${item.nome}">editar</button>
                         <a/>
                         <a href="/">

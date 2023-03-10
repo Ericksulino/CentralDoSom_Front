@@ -48,13 +48,19 @@ const getLogin =(req,res) =>{
 }
 
 const getCadUser =(req,res) =>{
-     // Recuperar informações da URL
-     const {editar,imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF} = req.query;
-    res.render('cad_user',{editar,imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF});
+
+    res.render('cad_user');
+}
+
+const getEditItem =(req,res) =>{
+    const editar = false; 
+    // Recuperar informações da URL
+    const {imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF,id} = req.query;
+    res.render('edit_item',{editar,imagem, nome, valor, categoria, tipo, descricao ,anunciante,telefone,cidade,UF,id});
 }
 
 const getCadItem =(req,res) =>{
-    res.render('cad_item');
+  res.render('cad_item');
 }
 
 const getMore =(req,res) =>{
@@ -82,6 +88,7 @@ module.exports ={
     getLogin,
     getCadUser,
     getCadItem,
+    getEditItem,
     geContato,
     getProds,
     getMore,

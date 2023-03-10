@@ -14,6 +14,7 @@ routes.get("/CadUser",(req, res) => {
     frontController.getCadUser(req, res);
 });
 routes.get("/CadItem",frontController.getCadItem);
+routes.get("/EditItem",frontController.getEditItem);
 routes.get("/Contato",frontController.geContato);
 routes.get("/More",frontController.getMore);
 routes.get("/Produtos",frontController.getProds);

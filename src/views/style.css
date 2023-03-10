@@ -777,4 +777,6 @@ form label{
     text-shadow: 0px 1px 1px black;
 }
 
-
+#imgItem {
+    width: 200px;
+}
