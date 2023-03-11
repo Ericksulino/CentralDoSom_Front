@@ -9,7 +9,7 @@ const image = document.getElementById('myFile');
 if (!token) {
   window.location.href = '/login';
 }
- fetch('https://api-centaldosom.vercel.app/auth', {
+ fetch('https://api-centraldosom.onrender.com/auth', {
    method: 'GET',
    headers: {
      'Authorization': 'Bearer ' + token
@@ -44,7 +44,10 @@ if (!token) {
               formData.append('tipo', campos[2].value);
               formData.append('descricao', campos[3].value);
               formData.append('valor', campos[4].value);
-              fetch('https://api-centaldosom.vercel.app/item/'+id, {
+              if (image.files[0]){
+                formData.append('file', image.files[0]);
+              }
+              fetch('https://api-centraldosom.onrender.com/item/'+id, {
                   method: 'PATCH',
                   headers: {
                     'Authorization': 'Bearer ' + token

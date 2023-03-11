@@ -43,7 +43,7 @@ console.log(isValid);
       password: campos[5].value
     };
     console.log(dados);
-    fetch('https://api-centaldosom.vercel.app/user', {
+    fetch('https://https://api-centraldosom.onrender.com/user', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
