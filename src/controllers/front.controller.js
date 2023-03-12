@@ -81,7 +81,15 @@ const getProds =(req,res) =>{
       res.render('meus_produtos');
 }
 
+const getTerms =(req,res) =>{
 
+  res.render('termosdeuso');
+}
+
+const getPolPriv =(req,res) =>{
+
+  res.render('politica_privacidade');
+}
 
 module.exports ={
     getHome,
@@ -92,4 +100,6 @@ module.exports ={
     geContato,
     getProds,
     getMore,
+    getTerms,
+    getPolPriv,
 };

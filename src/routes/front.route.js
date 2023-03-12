@@ -18,5 +18,6 @@ routes.get("/EditItem",frontController.getEditItem);
 routes.get("/Contato",frontController.geContato);
 routes.get("/More",frontController.getMore);
 routes.get("/Produtos",frontController.getProds);
-
+routes.get("/Termos",frontController.getTerms);
+routes.get("/Privacidade",frontController.getPolPriv);
 module.exports = routes;
