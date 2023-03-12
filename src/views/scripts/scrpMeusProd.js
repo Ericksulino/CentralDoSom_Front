@@ -36,23 +36,11 @@ if (!token) {
                         <h5>R$${item.valor}</h5>
                         <h3>${item.tipo}</h3>
                         <a href="/EditItem?imagem=${item.foto}&nome=${item.nome}&valor=${item.valor}&categoria=${item.categoria}&tipo=${item.tipo}&descricao=${item.descricao}&anunciante=${item.userName}&telefone=${item.userNumber}&cidade=${item.userCity}&UF=${item.userUF}&id=${item.id}">
-                        <button type="button" class="button green" id="edit-${item.nome}">editar</button>
+                        <button type="button" class="button green" id="edit-${item.nome}"data-id="${item.id}">editar</button>
                         <a/>
-                        <a href="/">
-                        <button type="button" class="button red" id="delete-${item.nome}">excluir</button>
-                        <a/>
-                        <div class="modal" id="modal">
-                        <div class="modal-content">
-                          <span class="close-button" onclick="closeModal()">
-                            &times;
-                          </span>
                         
-                          <h1 id="modal-message"></h1>
-                          <button type="button" class="button sim" id="edit-${item.nome}">Sim</button>
-                          <button type="button" class="button nao" id="delete-${item.nome}">Não</button>
+                        <button type="button" class="button red" id="delete-${item.nome}" data-id="${item.id}">excluir</button>
                         
-                        </div>
-                      </div>
                       </div>
                     `;
                     // adiciona o conteúdo gerado ao contêiner na página
@@ -72,34 +60,27 @@ if (!token) {
         }
        
       });
-
-    function showModal(message, action,modal,css) {
-      currentAction = action;
-      var element = document.getElementById(modal);
-      document.getElementById("modal-message").innerHTML = message;
-      element.classList.add(css);
-    }
-
-    function showModal(message, action,modal,css) {
-      currentAction = action;
-      var element = document.getElementById(modal);
-      document.getElementById("modal-message").innerHTML = message;
-      element.classList.add(css);
       
+    function showModal(message, action,modal,css) {
+      currentAction = action;
+      var element = document.getElementById(modal);
+      document.getElementById("modal-message").innerHTML = message;
+      element.classList.add(css);
+      console.log("aqui!");
     }
 
-  
     function closeModal() {
       var element = document.getElementById("modal");
       element.classList.remove("show-modal");
     }
-  
+    let ProductId;
     document.addEventListener("DOMContentLoaded", function() {
-      const editButtons = document.querySelectorAll(".button.green");
-      const deleteButtons = document.querySelectorAll(".button.red");
-      const confirmButton = document.querySelector(".button.sim");
-      const negButton = document.querySelector(".button.nao");
-  
+      setTimeout(function() {
+          const editButtons = document.querySelectorAll(".button.green");
+          const deleteButtons = document.querySelectorAll(".button.red");
+          const confirmButton = document.querySelector(".button.sim");
+          const negButton = document.querySelector(".button.nao");
+          //console.log(deleteButtons);
       editButtons.forEach(function(editButton) {
         editButton.addEventListener("click", function(event) {
           showModal("Deseja mesmo editar?", "edit","modal","show-modal");
@@ -110,6 +91,7 @@ if (!token) {
       deleteButtons.forEach(function(deleteButton) {
         deleteButton.addEventListener("click", function(event) {
           showModal("Deseja mesmo excluir?", "delete","modal","show-modal");
+          ProductId = event.target.dataset.id;
           console.log(`Excluir item: ${event.target.id}`);
         });
       });
@@ -126,7 +108,23 @@ if (!token) {
             break;
           case "delete":
             // Código para excluir item
-            console.log("Excluindo item");
+            console.log(`Excluindo item: ${ProductId}`);
+            fetch(`https://api-centraldosom.onrender.com/item/${ProductId}`, {
+              method: 'DELETE',
+              headers: {
+                'Authorization': 'Bearer ' + token
+              }
+            }).then(response => {
+              if (response.status === 201) {
+                // remove o item da página
+                console.log(`Item ${ProductId} excluído com sucesso`);
+                window.location.href = '/Produtos';
+              } else {
+                console.log(`Erro ao excluir item ${ProductId}`);
+              }
+            }).catch(error => {
+              console.error('Ocorreu um erro:', error);
+            });
             break;
           default:
             console.log("Nenhuma ação selecionada");
@@ -139,5 +137,6 @@ if (!token) {
   
         closeModal();
       });
+    }, 5050);
     });
   
