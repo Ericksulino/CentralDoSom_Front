@@ -81,9 +81,11 @@ if (!token) {
           const confirmButton = document.querySelector(".button.sim");
           const negButton = document.querySelector(".button.nao");
           //console.log(deleteButtons);
+
+      
       editButtons.forEach(function(editButton) {
         editButton.addEventListener("click", function(event) {
-          showModal("Deseja mesmo editar?", "edit","modal","show-modal");
+          //showModal("Deseja mesmo editar?", "edit","modal","show-modal");
           console.log(`Editar item: ${event.target.id}`);
         });
       });
