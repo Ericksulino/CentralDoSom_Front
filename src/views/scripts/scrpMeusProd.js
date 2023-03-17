@@ -92,7 +92,7 @@ if (!token) {
   
       deleteButtons.forEach(function(deleteButton) {
         deleteButton.addEventListener("click", function(event) {
-          showModal("Deseja mesmo excluir?", "delete","modal","show-modal");
+          showModal(`Deseja mesmo excluir ${event.target.id}?`, "delete","modal","show-modal");
           ProductId = event.target.dataset.id;
           console.log(`Excluir item: ${event.target.id}`);
         });
